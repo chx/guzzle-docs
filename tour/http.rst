@@ -142,8 +142,7 @@ Guzzle helps to make it extremely easy to send POST requests.  POST requests wil
     $request = $client->post('http://httpbin.org/post')
         ->addPostFields(array('custom_key' => 'value'))
         ->addPostFiles(array('file' => '/path/to/file.xml'));
-
-This can be achieved more succinctly-- ``post()`` accepts three arguments: the URL, optional headers, and the post fields. The headers override the defaults, so `` This can be overridden by setting the second argument to array('Content-Type' => 'application/json')`` can be used to send ``JSON`` data via ``POST``.
+This can be achieved more succinctly-- ``post()`` accepts three arguments: the URL, optional headers, and the post fields. The optional headers override the defaults, so for example setting the second argument to array('Content-Type' => 'application/json')`` can be used to send ``JSON`` data via ``POST``.
 
 To send files in the POST request, prepend the ``@`` symbol to the array value (just like you would if you were using the PHP ``curl_setopt`` function)::
 
