@@ -137,13 +137,15 @@ You can send PUT requests with raw entity bodies::
 POST
 ^^^^
 
-Guzzle helps to make it extremely easy to send POST requests.  POST requests will be sent with an ``application/x-www-form-urlencoded`` Content-Type header if no files are being sent in the POST.  If files are specified in the POST, then the Content-Type header will become ``multipart/form-data``.  Here's how to create a multipart/form-data POST request containing files and fields::
+Guzzle helps to make it extremely easy to send POST requests.  POST requests will be sent with an ``application/x-www-form-urlencoded`` Content-Type header if no files are being sent in the POST.  If files are specified in the POST, then the Content-Type header will become ``multipart/form-data``. Here's how to create a multipart/form-data POST request containing files and fields::
 
     $request = $client->post('http://httpbin.org/post')
         ->addPostFields(array('custom_key' => 'value'))
         ->addPostFiles(array('file' => '/path/to/file.xml'));
 
-This can be achieved more succinctly-- ``post()`` accepts three arguments: the URL, optional headers, and the post fields.  To send files in the POST request, prepend the ``@`` symbol to the array value (just like you would if you were using the PHP ``curl_setopt`` function)::
+This can be achieved more succinctly-- ``post()`` accepts three arguments: the URL, optional headers, and the post fields. The headers override the defaults, so `` This can be overridden by setting the second argument to array('Content-Type' => 'application/json')`` can be used to send ``JSON`` data via ``POST``.
+
+To send files in the POST request, prepend the ``@`` symbol to the array value (just like you would if you were using the PHP ``curl_setopt`` function)::
 
     $request = $client->post('http://www.example.com/upload', null, array(
         'custom_field' => 'my custom value',
